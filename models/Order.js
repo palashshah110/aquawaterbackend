@@ -124,12 +124,11 @@ const orderSchema = new mongoose.Schema(
 );
 
 // Generate order ID before saving
-orderSchema.pre('save', async function (next) {
+orderSchema.pre('save', async function () {
   if (this.isNew) {
     const count = await mongoose.model('Order').countDocuments();
     this.orderId = `SF${Date.now().toString().slice(-6)}${(count + 1).toString().padStart(4, '0')}`;
   }
-  next();
 });
 
 // Index for searching orders
