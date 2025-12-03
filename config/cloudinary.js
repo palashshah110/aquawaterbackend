@@ -57,6 +57,20 @@ const deleteImage = async (publicId) => {
   }
 };
 
+// Storage for article images
+const articleStorage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'shreeflow/articles',
+    allowed_formats: ['jpg', 'jpeg', 'png', 'webp'],
+  },
+});
+
+const uploadArticleImage = multer({
+  storage: articleStorage,
+  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB limit
+}).single('featuredImage');
+
 // Extract public ID from Cloudinary URL
 const getPublicIdFromUrl = (url) => {
   if (!url) return null;
@@ -72,5 +86,6 @@ module.exports = {
   uploadProductImages,
   uploadBannerImage,
   deleteImage,
+  uploadArticleImage,
   getPublicIdFromUrl,
 };

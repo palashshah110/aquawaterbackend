@@ -15,6 +15,7 @@ const productRoutes = require('./routes/productRoutes.js');
 const orderRoutes = require('./routes/orderRoutes.js');
 const bannerRoutes = require('./routes/bannerRoutes.js');
 const categoryRoutes = require('./routes/categoryRoutes.js');
+const articleRoutes = require('./routes/articleRoutes.js');
 const shiprocketRoutes = require('./routes/shiprocketRoutes.js');
 const userRoutes = require('./routes/userRoutes.js');
 // Initialize express app
@@ -47,6 +48,7 @@ app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/banners', bannerRoutes);
 app.use('/api/categories', categoryRoutes);
+app.use('/api/articles', articleRoutes);
 app.use("/api/shiprocket", shiprocketRoutes);
 app.use('/api/auth', userRoutes);
 // Razorpay key route (for frontend)
